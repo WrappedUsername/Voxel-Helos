@@ -17,12 +17,19 @@ describe("Voxel Helos Genesis Smart Contract Tests", () =>  {
   }),
   // WIP
   it("VHG NFT minted successfully", () =>  {
-    [account1]; await ethers.getSigners();
+    const account1 = await ethers.getSigners();
     expect; await voxelHelosGenesis.balanceOf(account1.address).to.equal(0);
-    
     const voxelHelosGenesis = await voxelHelosGenesis.safeMint();
-    console.log("Minted:", _tokenIdCounter)
+    const count = await voxelHelosGenesis._tokenIdCounter();
+    console.log("Minted:", count)
     
+  }),
+  // WIP
+  afterEach(() => {
+    const account1 = await ethers.getSigners();
+    const count = await voxelHelosGenesis._tokenIdCounter();
+    expect; await voxelHelosGenesis.ownerOf(count);
+    console.log("owner:", count, account1.address);
   })
   
 })
