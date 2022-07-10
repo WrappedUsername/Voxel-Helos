@@ -1,4 +1,4 @@
-//require("@nomiclabs/hardhat-waffle");
+require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-etherscan");
 require("@nomiclabs/hardhat-ethers");
 require("dotenv").config();
@@ -15,9 +15,9 @@ module.exports = {
     networks: {
       hardhat: {
       },
-    polygon: {
-      url: "https://polygon-mainnet.infura.io/v3/${process.env.INFURA_API_KEY}",
-      
+    ethereum: {
+      url: "https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}",
+      account: process.env.PRIVATE_KEY
     }
   },
   etherscan: {

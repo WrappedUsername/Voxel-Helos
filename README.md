@@ -1,2 +1,2 @@
-# Voxel-Helos-Genesis
-Deployed smart contract for Voxel Helos Genesis NFT project.
+# Voxel Helos
+Smart contract for Voxel Helos NFT project on ethereum.

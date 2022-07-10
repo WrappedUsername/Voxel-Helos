@@ -1,6 +1,6 @@
 {
-  "name": "voxel-helos_genesis",
-  "description": "This is the smart contract for VHG.",
+  "name": "voxel-helos",
+  "description": "This is the smart contract for VH.",
   "author": "WrappedUsername",
   "license": "MIT",
   "devDependencies": {
