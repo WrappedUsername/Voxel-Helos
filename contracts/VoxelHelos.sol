@@ -32,11 +32,14 @@ contract VoxelHelos is ERC721, Ownable {
     Counters.Counter public _tokenIdCounter;
     /// @notice Price for "the public" (not owner) safeMint function.
     uint256 public price = .05 ether; 
-    /// @dev Maximum supply is 4000, fix art engine to start at 1.
+    /// @dev Maximum supply is 4000. Update if needed.
     uint256 public maxSupply = 4000;
 
-    /// @notice Constructor assigns name and symbol.
-    constructor() ERC721("Voxel Helos", "VH") {}
+    /** @notice Constructor assigns name and symbol. Token id counter increments here to start 
+    the token count at 1 to match metadata. */ 
+    constructor() ERC721("Voxel Helos", "VH") {
+        _tokenIdCounter.increment();
+    }
 /*
 ------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------
@@ -58,6 +61,7 @@ ________________________________________________________________________________
     /// @notice Free mint for owner.
     function ownerMint(address to) public onlyOwner {
         uint256 tokenId = _tokenIdCounter.current();
+        require(_tokenIdCounter.current() <= maxSupply, "ALl NFT's have been minted");
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
     }
@@ -66,7 +70,7 @@ ________________________________________________________________________________
     function safeMint(address to) public payable {
         require(msg.value == price, "Please pay .05 ether");
         uint256 tokenId = _tokenIdCounter.current();
-        require(tokenId <= maxSupply, "ALl NFT's have been minted");
+        require(_tokenIdCounter.current() <= maxSupply, "ALl NFT's have been minted");
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
     }
